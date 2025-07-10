@@ -29,11 +29,11 @@ export function getParam(param) {
   return product;
 }
 
-// export function renderListWithTemplate(template, parentElement, list, position = "afterbegin", clear = false) {
-//   const htmlStrings = list.map(template);
+export function renderListWithTemplate(template, parentElement, list, position = "afterbegin", clear = false) {
+  const htmlStrings = list.map(template);
 
-//   if (clear) {
-//     parentElement.innerHTML = "";
-//   }
-//   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
-// }
+  if (clear) {
+    parentElement.innerHTML = "";
+  }
+  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+}

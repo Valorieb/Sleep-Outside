@@ -16,12 +16,12 @@ export default class ProductDetails {
         
         this.product = await this.dataSource.findProductById(this.productId);
         this.renderProductDetails();
-        document.getElementById('addToCart').addEventListener('click', this.addToCart.bind(this));
+        document.getElementById('addToCart').addEventListener('click', this.addProductToCart.bind(this));
     }
 
-    addProductToCart(product) {
+    addProductToCart() {
         const cartItems = getLocalStorage("so-cart") || [];
-        cartItems.push(product);
+        cartItems.push(this.product);
         setLocalStorage("so-cart", cartItems);
     }
 
