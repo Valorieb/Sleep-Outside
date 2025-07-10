@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-Trello borad: https://trello.com/b/VhpADK4i/sleep-outside-team-13
-Gerald Williams
-=======
 Benjamin Wasden
 Valorie Broderick
 Natalia Mendoza
+Gerald Williams
 
 https://trello.com/b/VhpADK4i/sleep-outside-team-13
->>>>>>> fa0e2f651b460903d64dec5c70b3fb233629b449

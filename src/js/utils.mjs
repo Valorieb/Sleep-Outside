@@ -21,3 +21,18 @@ export function setClick(selector, callback) {
   });
   qs(selector).addEventListener("click", callback);
 }
+// Get product via query string
+export function getParam(param) {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const product = urlParams.get('product');
+}
+
+// export function renderListWithTemplate(template, parentElement, list, position = "afterbegin", clear = false) {
+//   const htmlStrings = list.map(template);
+
+//   if (clear) {
+//     parentElement.innerHTML = "";
+//   }
+//   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+// }
