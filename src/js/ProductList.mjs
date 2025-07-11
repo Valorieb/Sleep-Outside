@@ -8,7 +8,24 @@ export default class ProductList{
     }
     async init(){
       const list = await this.dataSource.getData();
-      // eslint-disable-next-line no-console
-      console.log("Product list loaded:", list);
+      this.renderList(list);
     }
+    renderList(productList){
+        const htmlStrings = productList.map(productCardTemplate);
+        const combinedHtml =  htmlStrings.join("");
+        this.listElement.innerHTML = combinedHtml;
+        
+
+    }
+}
+
+function productCardTemplate(product) {
+  return `<li class="product-card">
+    <a href="product_pages/?product=${product.Id}">
+      <img src="${product.Image}" alt="Image of ${product.Brand.Name}">
+      <h2 class="card__brand">${product.Brand.Name}</h2>
+      <h3 class="card__name">${product.Name}</h3>
+      <p class="product-card__price">$${product.FinalPrice}</p>
+    </a>
+  </li>`;
 }
