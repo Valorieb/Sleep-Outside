@@ -26,7 +26,10 @@ export function getParam(param) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const product = urlParams.get(param);
-  return product;
+
+// This checks if product exists
+  if (product) return product;
+  return null
 }
 
 export function renderListWithTemplate(template, parentElement, list, position = "afterbegin", clear = false) {
