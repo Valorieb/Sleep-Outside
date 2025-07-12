@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, calcDiscount } from "./utils.mjs";
 
 export default class ProductDetails {
 
@@ -30,13 +30,6 @@ export default class ProductDetails {
         element.innerHTML = productDetailsTemplate(this.product);
     }
 }
-
-function calcDiscount(finalPrice, suggestedPrice){
-  const discount = ((suggestedPrice - finalPrice) / suggestedPrice) * 100;
-  console.log("discount:", discount.toFixed(0));
-  return discount.toFixed(0);
-}
-
 
 function productDetailsTemplate(product) {
     const discount = calcDiscount(product.FinalPrice, product.SuggestedRetailPrice);
