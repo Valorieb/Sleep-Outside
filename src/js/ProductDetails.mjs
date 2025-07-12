@@ -26,12 +26,20 @@ export default class ProductDetails {
     }
 
     renderProductDetails() {
-        productDetailsTemplate(this.product);
+         const element = document.querySelector(".product-detail");
+        element.innerHTML = productDetailsTemplate(this.product);
     }
+}
+
+function calcDiscount(finalPrice, suggestedPrice){
+  const discount = ((suggestedPrice - finalPrice) / suggestedPrice) * 100;
+  console.log("discount:", discount.toFixed(0));
+  return discount.toFixed(0);
 }
 
 
 function productDetailsTemplate(product) {
+    const discount = calcDiscount(product.FinalPrice, product.SuggestedRetailPrice);
     return `<section class="product-detail">
         <h3>${product.Brand.Name}</h3>
 
@@ -43,9 +51,11 @@ function productDetailsTemplate(product) {
           alt="${product.Name}"
         />
 
-        <p class="product-card__price">${product.ListPrice}</p>
+        <p class="product-card__price">${product.FinalPrice}</p>
 
-        <p class="product__color">${product.Colors.ColorName}</p>
+        ${discount > 0 ? `<p>Discounted at ${discount}% off!</p>` : ""}
+
+        <p class="product__color">${product.Colors[0].ColorName}</p>
 
         <p class="product__description">
           ${product.DescriptionHtmlSimple}
@@ -53,5 +63,5 @@ function productDetailsTemplate(product) {
         <div class="product-detail__add">
           <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
         </div>
-      </section>`
+      </section>`;
 }
