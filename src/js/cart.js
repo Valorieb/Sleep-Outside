@@ -30,9 +30,14 @@ function cartItemTemplate(item) {
 function getCartTotal(array) {
   let i = 0;
   let cartTotal = 0;
-    while (i < array.length) {
-      cartTotal += array[i].FinalPrice;
-      i++;
+  if (array.length == 0) {
+    cartTotal = 0;
+  }
+  else {
+      while (i < array.length) {
+        cartTotal += array[i].FinalPrice;
+        i++;
+    }
   }
 
   return cartTotal;
