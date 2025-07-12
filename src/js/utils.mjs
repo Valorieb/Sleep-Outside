@@ -47,3 +47,8 @@ export function renderListWithTemplate(
   const combinedHtml = htmlStrings.join("");
   parentElement.insertAdjacentHTML(position, combinedHtml);
 }
+
+export function calcDiscount(finalPrice, suggestedPrice) {
+  const discount = ((suggestedPrice - finalPrice) / suggestedPrice) * 100;
+  return discount.toFixed(0);
+}
