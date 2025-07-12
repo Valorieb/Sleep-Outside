@@ -5,22 +5,45 @@ export default class ProductList {
     this.productCategory = productCategory;
     this.dataSource = dataSource;
     this.listElement = listElement;
+    this.productList = []; 
   }
+
   async init() {
-    const list = await this.dataSource.getData();
-    this.renderList(list);
+    this.productList = await this.dataSource.getData();
+    this.renderList(this.productList);
   }
+
   renderList(productList) {
+    this.listElement.innerHTML = "";
     renderListWithTemplate(productCardTemplate, this.listElement, productList);
+    this.addRemoveListeners();
+  }
+
+  addRemoveListeners() {
+    const buttons = this.listElement.querySelectorAll(".remove-btn");
+    buttons.forEach(button => {
+      button.addEventListener("click", (e) => {
+        const li = e.target.closest(".product-card");
+        const productId = li.dataset.id; 
+        this.removeFromCart(productId);
+      });
+    });
+  }
+
+  removeFromCart(productId) {
+    const id = String(productId);  
+    this.productList = this.productList.filter(item => String(item.Id) !== id);
+    this.renderList(this.productList); 
   }
 }
 
 function productCardTemplate(product) {
   const discount = calcDiscount(
     product.FinalPrice,
-    product.SuggestedRetailPrice,
+    product.SuggestedRetailPrice
   );
-  return `<li class="product-card">
+
+  return `<li class="product-card" data-id="${product.Id}">
     <a href="product_pages/?product=${product.Id}">
       <img src="${product.Image}" alt="Image of ${product.Brand.Name}">
       <h2 class="card__brand">${product.Brand.Name}</h2>
@@ -28,5 +51,6 @@ function productCardTemplate(product) {
       <p class="product-card__price">$${product.FinalPrice}</p>
       ${discount > 0 ? `<p>Discounted at ${discount}% off!</p>` : ""}
     </a>
+    <button class="remove-btn">Remove from Cart</button>
   </li>`;
 }
