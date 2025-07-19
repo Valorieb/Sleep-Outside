@@ -4,10 +4,15 @@ export default class ShoppingCart {
     constructor() {}
 
     renderCartContents() {
-      const cartItems = getLocalStorage("so-cart");
-      const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-      document.querySelector(".product-list").innerHTML = htmlItems.join("");
-      this.getCartTotal(cartItems);
+      const cartItems = getLocalStorage("so-cart") || [];
+      if (cartItems.length === 0) {
+        document.querySelector(".product-list").innerHTML = "<p>Your cart is empty.";
+      }
+      else {
+        const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+        document.querySelector(".product-list").innerHTML = htmlItems.join("");
+        this.getCartTotal(cartItems);
+      }
     }
 
     getCartTotal(array) {
@@ -31,7 +36,7 @@ function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
-      src="${item.Image}"
+      src="${item.Images.PrimarySmall}"
       alt="${item.Name}"
     />
   </a>
