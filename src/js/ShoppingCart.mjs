@@ -6,7 +6,7 @@ export default class ShoppingCart {
     renderCartContents() {
       const cartItems = getLocalStorage("so-cart") || [];
       if (cartItems.length === 0) {
-        document.querySelector(".product-list").innerHTML = "<p>Your cart is empty.";
+        document.querySelector(".product-list").innerHTML = "<p>Your cart is empty.</p>";
       }
       else {
         const htmlItems = cartItems.map((item) => cartItemTemplate(item));
