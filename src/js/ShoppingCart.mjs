@@ -28,7 +28,7 @@ export default class ShoppingCart {
               i++;
           }
         }
-        total.innerHTML = `Total: $${cartTotal}`;
+        total.innerHTML = `Total: $${cartTotal.toFixed(2)}`;
     }
 }
 
