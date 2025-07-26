@@ -303,3 +303,57 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+.checkout-form {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 300px 1fr;
+}
+.checkout-form .summary h3 {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 16px;
+  color: #525b0f;
+}
+.checkout-form .summary table {
+  display: grid;
+  border: 1px solid #525b0f;
+}
+
+.checkout-form fieldset {
+  display: grid;
+  gap: 2px;
+
+  margin-bottom: 16px;
+}
+.checkout-form fieldset legend {
+  font-size: 14px;
+  color: #525b0f;
+  font-weight: 600;
+}
+
+.checkout-form fieldset label {
+  margin-top: 8px;
+}
+
+.checkout-form fieldset input {
+  height: 40px;
+}
+
+.checkout-form button {
+  margin-bottom: 40px;
+}
+.hide {
+  display: none;
+}
+.superscript {
+  position: absolute;
+  top: 10px;
+  right: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: white;
+  background-color: goldenrod;
+  border-radius: 50%;
+  font-size: 15px;
+}
